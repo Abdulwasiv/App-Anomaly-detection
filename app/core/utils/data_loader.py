@@ -39,15 +39,6 @@ class DataLoader:
     #     value = self.db_connection.resolve_identifier(value)
     #     return f"{self.identifier}{value}{self.identifier}"
 
-    def process_stream_data(self, data: Dict):
-        """Process incoming streaming data.
-
-        :param data: streaming data point to be loaded
-        :type data: dict
-        """
-        logger.debug(f"Processing streaming data: {data}")
-        self._load_data(data)
-
     def _load_data(self, data: Dict):
         """Load the data into the appropriate storage.
 

@@ -20,7 +20,8 @@ class NSQService:
             #NSQ all data's accouunt id
             account_id = data.get("account_id")
             if account_id == self.my_account_id:
-                print(f"Received message with account ID {self.my_account_id}: {json.dumps(data, indent=2)}")
+                datas=json.dumps(data)
+                print(f"Received message with account ID {self.my_account_id}: {datas}")
                 message.finish()  # Acknowledge message handling
             else:
                 #print(f"Message ignored, account ID {account_id} does not match target {self.my_account_id}")
