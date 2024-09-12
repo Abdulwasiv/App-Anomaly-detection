@@ -40,13 +40,18 @@ class DataLoader:
     #     return f"{self.identifier}{value}{self.identifier}"
 
     def _load_data(self, data: Dict):
-        """Load the data into the appropriate storage.
+        try:
+            # Query ClickHouse for data where account_id and metric match
+            query = f"""
+            SELECT * FROM your_table
+            WHERE account_id = '{account_id}' AND metric = '{metric}'
+            """
+            result = self.client.execute(query)
+            return result
+        except Exception as e:
+            print(f"Failed to query ClickHouse: {e}")
+            return None
 
-        :param data: data to be loaded
-        :type data: dict
-        """
-        # Placeholder for loading logic
-        logger.info(f"Data loaded: {data}")
 
     def _convert_date_to_string(self, date: datetime) -> str:
         """Convert date to string based on the connection's date format.

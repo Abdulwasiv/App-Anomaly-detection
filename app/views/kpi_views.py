@@ -4,6 +4,7 @@ from flask import Blueprint, jsonify
 ingestion_blueprint=Blueprint('kpi',__name__)
 
 STATIC_JSON = {
+    "kpi_id":1,
     "account_id": 20242121,
     "name": "Sample Metric",
     "is_certified": True,
@@ -24,7 +25,7 @@ STATIC_JSON = {
 @ingestion_blueprint.route('/kpi', methods=['POST'])
 def Kpi_views():
         return jsonify(STATIC_JSON),200
-def account_id():
-        return STATIC_JSON["account_id"]
+def Kpi_id():
+        return STATIC_JSON["kpi_id"]
         
         
